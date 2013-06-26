@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'        # if you use RubyGems
+require 'daemons'
+require 'oohlalog_syslog'
+require 'oohlalog'
+
+Daemons.run_proc('oohlalog') do
+
+	# Oohlalog.host = "localhost"
+	# Oohlalog.port = 8196
+	configuration = OohlalogSyslog::Configuration.new('/etc/oohlalog/config.yml')
+
+	if !configuration.config
+		puts "Error loading Configuration file"
+		abort
+	end
+
+	threads = []
+
+	configuration.config.each do |key,value|
+		thr = Thread.new do
+			puts "Loading Key: #{key} - #{value}"
+			file_watcher = OohlalogSyslog::FileWatcher.new(value["path"],value)
+			file_watcher.run
+		end
+		threads << thr
+	end
+	puts "SysLog Monitor Loaded!"
+	threads.each { |thr| thr.join }
+	puts "Shutting Down"
+
+end
