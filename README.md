@@ -4,10 +4,13 @@ A syslog/log file tail monitor for forwarding to the oohlalog system.
 
 ## Installation
 
+Prerequisites: Ruby 1.9.2 or higher needs to be installed along with rubygems (normally included with ruby)
+
 Install the oohlalog_syslog scripts with:
 
-		gem install 'oohlalog_syslog'
-
+```
+gem install 'oohlalog_syslog'
+```
 
 
 ## Usage
