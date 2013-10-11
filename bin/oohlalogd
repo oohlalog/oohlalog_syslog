@@ -5,7 +5,7 @@ require 'daemons'
 require 'oohlalog_syslog'
 require 'oohlalog'
 
-Daemons.run_proc('oohlalog') do
+Daemons.run_proc('oohlalogd') do
 
 	# Oohlalog.host = "localhost"
 	# Oohlalog.port = 8196

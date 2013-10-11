@@ -1,4 +1,5 @@
 syslog:
+  api_key: APIKEYHERE
 	path: "/var/log/syslog"
 	default_level: INFO
 	error_pattern: /ERROR/
