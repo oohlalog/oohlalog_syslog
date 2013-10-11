@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["David Estes"]
   spec.email         = ["destes@bcap.com"]
   spec.description   = "Log File Watcher Daemon Written in ruby"
-  spec.summary       = "Monitors log files as specified in etc config"
-  spec.homepage      = ""
+  spec.summary       = "Monitors log files as specified in etc config and passes them to the oohlalog logging service."
+  spec.homepage      = "http://www.oohlalog.com/"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
