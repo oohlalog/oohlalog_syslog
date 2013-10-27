@@ -2,7 +2,7 @@ syslog:
   api_key: APIKEYHERE
 	path: "/var/log/syslog"
 	default_level: INFO
-	error_pattern: /ERROR/
-	warn_pattern: /WARN/
-	info_pattern: /INFO/
+	error_pattern: ERROR
+	warn_pattern: WARN
+	info_pattern: INFO
 
