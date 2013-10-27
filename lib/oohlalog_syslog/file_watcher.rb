@@ -12,6 +12,7 @@ class OohlalogSyslog::FileWatcher
 
 	def run
 		File::Tail::Logfile.open(@filename) do |log|
+			log.backward(0)
 			log.tail do |line|
 				if @options.has_key?("error_pattern") && line.match(@options["error_pattern"])
 					@logger.error(line, @category)
