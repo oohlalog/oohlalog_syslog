@@ -7,7 +7,18 @@ class OohlalogSyslog::FileWatcher
 		@filename = filename
 		@category = options["category"] || "NA"
 		@options = options
-		@logger = Oohlalog::Logger.new(100, 0, options)
+		min_level = options["min_log_level"].to_i || 'DEBUG'
+		level = 0
+		if min_level == 'INFO'
+			level = 1
+		elsif min_level == 'WARN'
+			level = 2
+		elsif min_level == 'ERROR'
+			level = 3
+		elsif min_level == 'FATAL'
+			level = 4
+		end
+		@logger = Oohlalog::Logger.new(100, level, options)
 	end
 
 	def run
@@ -22,6 +33,8 @@ class OohlalogSyslog::FileWatcher
 					@logger.warn(line, @category)
 				elsif @options.has_key?("info_pattern") && line.match(@options["info_pattern"])
 					@logger.info(line, @category)
+				elsif @options.has_key?("debug_pattern") && line.match(@options["debug_pattern"])
+					@logger.debug(line, @category)
 				else
 					@logger.info(line, @category)
 				end

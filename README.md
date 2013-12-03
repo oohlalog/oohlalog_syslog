@@ -23,10 +23,12 @@ Create a configuration file in `/etc/oohlalog/config.yml`
 syslog:
 	path: /var/log/system.log
 	api_key: YOUR_API_KEY
+	min_log_level: DEBUG
 	default_level: INFO
 	error_pattern: ERROR
 	warn_pattern: WARN
 	info_pattern: INFO
+	debug_pattern: DEBUG
 ```
 
 Multiple log files can be listed here by name (in the example above we are naming this log syslog).
